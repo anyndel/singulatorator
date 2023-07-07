@@ -1,0 +1,41 @@
+// Using the VS Code jsonc lightweight definition, supporting comments but otherwise no deviation from JSON
+// https://code.visualstudio.com/docs/languages/json#_json-with-comments
+
+// _ comment lines starting with underscore indicate path relative to root
+
+// _
+{
+  "definitions" : {
+    "regexSelectors" : [
+      {
+        "shortId" : 23,
+        "name" : "example of date ISO"
+        "selector" : "[12][0-9]{3}-[012][0-9]-[0123][0-9]"
+      }
+    ],
+    "yamlOperators" : [
+    ]
+  },
+  "folders" : {
+  },
+  "files" : {
+  },
+  "output" : {
+    "features" : {
+      "css" : true,
+      "js" : true,
+      "svelteBits" : true
+    },
+    "fileName" : "{date:yyyy_MM_dd}_kb.html",
+    "templating" : {
+      "header" : {
+        "text" : "",
+        "spacer" : false
+      },
+      "footer" : {
+        "text" : "",
+        "spacer" : false        
+      }
+    }
+  }
+}
