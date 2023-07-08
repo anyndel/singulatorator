@@ -3,24 +3,54 @@
 
 // _ comment lines starting with underscore indicate path relative to root
 
-// _
+/* _ */
 {
+  /* _.definitions */
+  // options, settings and presets
+  // the key MUST be present
+  // the object MUST be present
   "definitions" : {
+
+    /* _.definitions.regexSelectors */
+    // contains custom-defined reusable regex bits to select dates, tags etc
+    // the key MUST be present
+    // IF the array is null, then it is assumed custom functionality is unavailable
+    //   THEN the parsing application MUST ignore custom regex assignments everywhere
+    // IF the array is present, including a 0-length array
+    //    THEN the parsing application MUST attempt to find custom regex and MUST throw an error if not found
+    //    The parsing application MAY not cancel the process and offer options for default replacement instead
     "regexSelectors" : [
       {
-        "key" : 23,
-        "name" : "example of date ISO"
-        "selector" : "[12][0-9]{3}-[012][0-9]-[0123][0-9]"
+
+        // for each individual item in the array
+        "key" : 23,  // Integer unique key to be used for replacement seek, MUST be not null and unique
+        "name" : "example of date ISO",  // String of user defined name, MAY be null
+        "selector" : "[12][0-9]{3}-[012][0-9]-[0123][0-9]"  // Valid Regex selector, MAY be null
       }
     ],
+
+    /* _.definitions.yamlOperators */
+    // contains custom-defined reusable YAML/FrontMatter usage rules
+    // the key MUST be present
+    // IF the array is null, then it is assumed custom functionality is unavailable
+    //   THEN the parsing application MUST ignore custom usage rule assignments everywhere
+    // IF the array is present, including a 0-length array
+    //    THEN the parsing application MUST attempt to find custom usage rules and MUST throw an error if not found
+    //    The parsing application MAY not cancel the process and offer options for default replacement instead
     "yamlOperators" : [
       {
-        "key": 12,
-        "name" : "example of dumping everything in tags"
-        "property" : "topics"
-        "actionChain" : " :quoteless.to.tagPool"
+
+        // for each individual item in the array
+        "key": 12,  // Integer unique key to be used for replacement seek, MUST be not null and unique
+        "name" : "example of dumping everything in tags",  // String of user defined name, MAY be null
+        "property" : "topics",   // String containing the FrontMatter property target, MUST be not null, MUST be not empty
+        "actionChain" : " :quoteless.to.tagPool"  //custom action to use, MAY be null
       }
     ],
+
+    /* _.definitions.knowledge */
+    // settings about interpretation of the data
+    // presets, constrains and definitions of what various parts of the data may mean or how to use them
     "knowledge" : {
       "tagPool" : true,
       "linkPool" : true,
@@ -38,7 +68,10 @@
       "contents" : {
         "ignorePattern" : null,
         "parseSelector" : null,
-        "children" : ":inherit"
+        "children" : ":inherit",
+        "extras" : {
+          "frontMatterInTxt" : true
+        }
       }
       "friendlyName" : "Folder No 1",
       "friendlyDescription" : "",
