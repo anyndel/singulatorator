@@ -8,18 +8,82 @@
   "definitions" : {
     "regexSelectors" : [
       {
-        "shortId" : 23,
+        "key" : 23,
         "name" : "example of date ISO"
         "selector" : "[12][0-9]{3}-[012][0-9]-[0123][0-9]"
       }
     ],
     "yamlOperators" : [
-    ]
+      {
+        "key": 12,
+        "name" : "example of dumping everything in tags"
+        "property" : "topics"
+        "actionChain" : " :quoteless.to.tagPool"
+      }
+    ],
+    "knowledge" : {
+      "tagPool" : true,
+      "linkPool" : true,
+      "timelines" : [
+      ],
+      "cards" : [
+      ],
+      "actors" : [
+      ]
+    }
   },
   "folders" : {
+    "folder1" : {
+      "path" : "/folder_1",
+      "contents" : {
+        "ignorePattern" : null,
+        "parseSelector" : null,
+        "children" : ":inherit"
+      }
+      "friendlyName" : "Folder No 1",
+      "friendlyDescription" : "",
+      "type" : "notes",
+      "date" : ":text.firstParsed.ISO",
+      "linkName" : ":none",
+      "seekLinks" : true,
+      "frontMatter" : {
+      },
+    },
+    "folder2" : {
+      "path" : "/folder_two",
+      "contents" : {
+        "ignorePattern" : "*archive*",
+        "parseSelector" : ":top.100",
+        "children" : null
+      }
+      "friendlyName" : "Folder number 2",
+      "friendlyDescription" : "Top 100 by modified date",
+      "type" : "notes",
+      "date" : ":fileName.firstParsed.ISO",
+      "linkName" : ":text.firstParsed.Header",
+      "seekLinks" : true,
+      "frontMatter" : {
+        "topics" : ":to.linkPool"
+      },
+    }
   },
   "files" : {
+    "singleFile1" : {
+      "path" : "/bad_folder/goodFile.md",
+      "friendlyName" : "File - Single - 1",
+      "friendlyDescription" : "In a bad folder",
+      "type" : "logs",
+      "date" : null,
+      "logEntry" : {
+        "timestamp" : ":text.ISO",
+        
+      }
+      "linkName" : ":none",
+      "seekLinks" : true,
+      "frontMatter" : {
+      },
   },
+  "thirdParties" : null,
   "output" : {
     "features" : {
       "css" : true,
